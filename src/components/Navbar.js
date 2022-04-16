@@ -3,16 +3,16 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import { withAuthenticator } from '@aws-amplify/ui-react';
-import Button from "react-bootstrap/Button";
+
 import { Link } from "react-router-dom";
-import { CgLogOut } from "react-icons/cg";
+
 import { GiMusicalNotes } from "react-icons/gi";
-import { BsCalendar2Range, BsCalendar2RangeFill, BsMusicNoteList } from "react-icons/bs";
+import { BsCalendar2Range, BsMusicNoteList } from "react-icons/bs";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 
 
 import { CgFileDocument } from "react-icons/cg";
-import Amplify, { Auth } from 'aws-amplify';
+import Amplify from 'aws-amplify';
 import '@aws-amplify/ui-react/styles.css';
 import awsconfig from '../aws-exports';
 Amplify.configure(awsconfig);
@@ -65,7 +65,7 @@ function NavBar({ signOut, user }) {
                 to="/calendar"
                 onClick={() => updateExpanded(false)}
               >
-                <BsCalendar2RangeFill style={{ marginBottom: "2px" }} /> Calendar
+                <BsCalendar2Range style={{ marginBottom: "2px" }} /> Calendar
               </Nav.Link>
             </Nav.Item>
 

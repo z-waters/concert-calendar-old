@@ -1,9 +1,12 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+import FullCalendar from '@fullcalendar/react' // must go before plugins
+import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
+import interactionPlugin from "@fullcalendar/interaction" // needed for dayClick
 
-
-
-
+function handleDateClick(arg){// bind with an arrow function
+  alert(arg.dateStr)
+}
 function Calendar() {
   return (
     <Container fluid className="about-section">
@@ -13,7 +16,10 @@ function Calendar() {
         <h1 className="project-heading">
           <strong className="blue">Calendar Header</strong>
         </h1>
-        <p className="blue">Display Personal Calendar</p>
+        <FullCalendar
+        plugins={[ dayGridPlugin, interactionPlugin ]}
+        dateClick={handleDateClick}
+        />
       
 
 
@@ -24,5 +30,6 @@ function Calendar() {
     </Container>
   );
 }
+
 
 export default Calendar;
