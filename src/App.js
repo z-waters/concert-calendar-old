@@ -5,7 +5,6 @@ import Home from "./components/Home";
 import About from "./components/About/About";
 import EventsPage from "./components/EventsPage";
 import Calendar from "./components/Calendar";
-import Login from "./components/Login";
 import {
   BrowserRouter as Router,
   Route,
@@ -43,7 +42,7 @@ function App() {
           <Route path="/events" element={<EventsPage />} />
           <Route path="/about" element={<About />} />
           <Route path="/calendar" element={<Calendar />} />
-          <Route path="/login" element={<Login />} />
+     
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
 

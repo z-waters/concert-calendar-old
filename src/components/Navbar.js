@@ -5,20 +5,18 @@ import Container from "react-bootstrap/Container";
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-import { CgGitFork } from "react-icons/cg";
+import { CgLogOut } from "react-icons/cg";
+import { GiMusicalNotes } from "react-icons/gi";
+import { BsCalendar2Range, BsCalendar2RangeFill, BsMusicNoteList } from "react-icons/bs";
+import { RiLogoutBoxRLine } from "react-icons/ri";
 
-import {
-  AiFillStar,
-  AiOutlineHome,
-  AiOutlineFundProjectionScreen,
-  AiOutlineUser,
-} from "react-icons/ai";
 
 import { CgFileDocument } from "react-icons/cg";
 import Amplify, { Auth } from 'aws-amplify';
 import '@aws-amplify/ui-react/styles.css';
 import awsconfig from '../aws-exports';
 Amplify.configure(awsconfig);
+
 
 function NavBar({ signOut, user }) {
   const [expand, updateExpanded] = useState(false);
@@ -42,7 +40,7 @@ function NavBar({ signOut, user }) {
       className={navColour ? "sticky" : "navbar"}
     >
       <Container>
-        
+
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
           onClick={() => {
@@ -57,7 +55,7 @@ function NavBar({ signOut, user }) {
           <Nav className="ms-auto" defaultActiveKey="#home">
             <Nav.Item>
               <Nav.Link as={Link} to="/" onClick={() => updateExpanded(false)}>
-                <AiOutlineHome style={{ marginBottom: "2px" }} /> Home
+                <GiMusicalNotes style={{ marginBottom: "2px" }} /> Home
               </Nav.Link>
             </Nav.Item>
 
@@ -67,7 +65,7 @@ function NavBar({ signOut, user }) {
                 to="/calendar"
                 onClick={() => updateExpanded(false)}
               >
-                <AiOutlineUser style={{ marginBottom: "2px" }} /> Calendar
+                <BsCalendar2RangeFill style={{ marginBottom: "2px" }} /> Calendar
               </Nav.Link>
             </Nav.Item>
 
@@ -77,8 +75,7 @@ function NavBar({ signOut, user }) {
                 to="/events"
                 onClick={() => updateExpanded(false)}
               >
-                <AiOutlineFundProjectionScreen
-                  style={{ marginBottom: "2px" }}/>Events
+                <BsMusicNoteList style={{marginBottom: "2px" }} /> Events
               </Nav.Link>
             </Nav.Item>
 
@@ -92,12 +89,17 @@ function NavBar({ signOut, user }) {
               </Nav.Link>
             </Nav.Item>
 
-        
+
 
             <Nav.Item>
-              <button onClick={signOut}>Sign out</button>
-                
-            
+             
+              <Nav.Link
+                as={Link}
+                to="#"
+                onClick={signOut}
+              >
+                <RiLogoutBoxRLine style={{ marginBottom: "2px" }} /> Sign out
+              </Nav.Link>
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>
