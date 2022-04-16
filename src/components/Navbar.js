@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
-
+import { withAuthenticator } from '@aws-amplify/ui-react';
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { CgGitFork } from "react-icons/cg";
@@ -15,8 +15,12 @@ import {
 } from "react-icons/ai";
 
 import { CgFileDocument } from "react-icons/cg";
+import Amplify, { Auth } from 'aws-amplify';
+import '@aws-amplify/ui-react/styles.css';
+import awsconfig from '../aws-exports';
+Amplify.configure(awsconfig);
 
-function NavBar() {
+function NavBar({ signOut, user }) {
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
 
@@ -91,13 +95,9 @@ function NavBar() {
         
 
             <Nav.Item>
-              <Nav.Link
-                as={Link}
-                to="/login"
-                onClick={() => updateExpanded(false)}
-              >
-                <CgFileDocument style={{ marginBottom: "2px" }} /> Login
-              </Nav.Link>
+              <button onClick={signOut}>Sign out</button>
+                
+            
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>
@@ -106,4 +106,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default withAuthenticator(NavBar);
