@@ -9,7 +9,8 @@ import { RiLogoutBoxRLine } from "react-icons/ri";
 import { CgFileDocument } from "react-icons/cg";
 
 
-function NavBar({ signOut, user }) {
+
+function NavBar() {
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
 
@@ -87,7 +88,7 @@ function NavBar({ signOut, user }) {
               <Nav.Link
                 as={Link}
                 to="#"
-                onClick={signOut}
+                onClick={() => updateExpanded(false)}
               >
                 <RiLogoutBoxRLine style={{ marginBottom: "2px" }} /> Sign out
               </Nav.Link>
