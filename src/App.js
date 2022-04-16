@@ -16,9 +16,6 @@ import ScrollToTop from "./components/ScrollToTop";
 import './App.css';
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Amplify, { Auth } from 'aws-amplify';
-import awsconfig from './aws-exports';
-Amplify.configure(awsconfig);
 
 
 
