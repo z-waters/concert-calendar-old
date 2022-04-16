@@ -17,13 +17,13 @@ function Footer() {
          
         </Col>
         <Col md="4" className="footer-copywright">
-          <h3><strong>Copyright © {year} Reuel Mendoza</strong></h3>
+          <h3><strong>Copyright © {year} Concert Calendar</strong></h3>
         </Col>
         <Col md="4" className="footer-body">
           <ul className="footer-icons">
             <li className="social-icons">
               <a
-                href="https://github.com/BunsoMendoza"
+                href="https://github.com/z-waters/concert-calendar"
                
                 target="_blank" 
                 rel="noopener noreferrer"
@@ -34,7 +34,7 @@ function Footer() {
             </li>
             <li className="social-icons">
               <a
-                href="https://twitter.com/bunsomendoza"
+                href="https://twitter.com/"
                 style={{ color: "white" }}
                 target="_blank" 
                 rel="noopener noreferrer"
@@ -45,7 +45,7 @@ function Footer() {
             </li>
             <li className="social-icons">
               <a
-                href="https://www.linkedin.com/in/reuel-mendoza-66032982/"
+                href="https://www.linkedin.com/"
                 className="icon-colour  home-social-icons"
                 style={{ color: "white" }}
                 target="_blank" 

@@ -2,21 +2,14 @@ import React, { useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
-
-import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-import { CgGitFork } from "react-icons/cg";
-
-import {
-  AiFillStar,
-  AiOutlineHome,
-  AiOutlineFundProjectionScreen,
-  AiOutlineUser,
-} from "react-icons/ai";
-
+import { GiMusicalNotes } from "react-icons/gi";
+import { BsCalendar2Range, BsMusicNoteList } from "react-icons/bs";
+import { RiLogoutBoxRLine } from "react-icons/ri";
 import { CgFileDocument } from "react-icons/cg";
 
-function NavBar() {
+
+function NavBar({ signOut, user }) {
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
 
@@ -38,7 +31,7 @@ function NavBar() {
       className={navColour ? "sticky" : "navbar"}
     >
       <Container>
-        
+
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
           onClick={() => {
@@ -53,7 +46,7 @@ function NavBar() {
           <Nav className="ms-auto" defaultActiveKey="#home">
             <Nav.Item>
               <Nav.Link as={Link} to="/" onClick={() => updateExpanded(false)}>
-                <AiOutlineHome style={{ marginBottom: "2px" }} /> Home
+                <GiMusicalNotes style={{ marginBottom: "2px" }} /> Home
               </Nav.Link>
             </Nav.Item>
 
@@ -63,7 +56,7 @@ function NavBar() {
                 to="/calendar"
                 onClick={() => updateExpanded(false)}
               >
-                <AiOutlineUser style={{ marginBottom: "2px" }} /> Calendar
+                <BsCalendar2Range style={{ marginBottom: "2px" }} /> Calendar
               </Nav.Link>
             </Nav.Item>
 
@@ -73,8 +66,7 @@ function NavBar() {
                 to="/events"
                 onClick={() => updateExpanded(false)}
               >
-                <AiOutlineFundProjectionScreen
-                  style={{ marginBottom: "2px" }}/>Events
+                <BsMusicNoteList style={{marginBottom: "2px" }} /> Events
               </Nav.Link>
             </Nav.Item>
 
@@ -88,15 +80,16 @@ function NavBar() {
               </Nav.Link>
             </Nav.Item>
 
-        
+
 
             <Nav.Item>
+             
               <Nav.Link
                 as={Link}
-                to="/login"
-                onClick={() => updateExpanded(false)}
+                to="#"
+                onClick={signOut}
               >
-                <CgFileDocument style={{ marginBottom: "2px" }} /> Login
+                <RiLogoutBoxRLine style={{ marginBottom: "2px" }} /> Sign out
               </Nav.Link>
             </Nav.Item>
           </Nav>
