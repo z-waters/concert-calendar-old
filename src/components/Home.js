@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
+import Footer from "./Footer";
 
 
 function Home() {
@@ -9,12 +10,6 @@ function Home() {
 
       <Container className="home-content">
 
-        <Row>
-          <div style={{ textAlign: "left" }}>
-
-          </div>
-         
-        </Row>
         <h1 className="project-heading">
           <strong className="blue">Home Header</strong>
         </h1> 
@@ -25,12 +20,12 @@ function Home() {
 
 
       </Container>
-
+      
     </Container>
+   
 
 
-
-
+    
 
 
   );

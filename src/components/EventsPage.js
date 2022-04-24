@@ -1,23 +1,20 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-
+import ConcertList from "./ConcertList";
 
 
 
 function EventsPage() {
   return (
-    <Container fluid className="about-section">
+    <Container fluid className="concert-list">
       
-      <Container>
+      <Container className = "concert-list-content">
        
         <h1 className="project-heading">
           <strong className="blue">Events Header</strong>
         </h1>
-        <p className="blue">This is the page where we will list all the concerts from the song kick api.</p>
-      
-
-
-      
+       
+        <ConcertList />
 
     
       </Container>

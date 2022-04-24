@@ -15,6 +15,8 @@ import ScrollToTop from "./components/ScrollToTop";
 import './App.css';
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Footer from "./components/Footer";
+
 
 
 
@@ -30,21 +32,23 @@ function App() {
   }, []);
   return (
     <Router>
-      <Preloader load={load} />
-      <div className="App" id={load ? "no-scroll" : "scroll"}>
+      
+      <div className="App" >
         <Navbar />
         <ScrollToTop />
+        
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/events" element={<EventsPage />} />
           <Route path="/about" element={<About />} />
           <Route path="/calendar" element={<Calendar />} />
-     
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
-
+      
       </div>
+      <Footer />
     </Router>
+    
   );
 }
 
