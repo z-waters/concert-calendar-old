@@ -41,6 +41,80 @@ button:focus {
 
 
 
+/* --------- */
+/* Home section */
+/* --------- */
+.home-header {
+  padding-top: 60px !important;
+
+}
+
+.home-section {
+  position: static;
+  height: calc(100vh - 55px);
+  z-index: -1;
+  background-image: var(--image-gradient);
+  background-position: top center;
+  background-repeat: no-repeat;
+  padding-bottom: 30px !important;
+  padding-top: 0px !important;
+  padding-bottom:60px;
+}
+
+.home-content {
+  padding: 8rem 0 2rem !important;
+  color: #5CDB95;
+
+  text-align: center;
+}
+
+
+/* --------- */
+/* Calendar */
+/* --------- */
+
+.calendar-page{
+  position: relative !important;
+  padding-top: 150px !important;
+  padding-bottom: 50px !important;
+  background-image: var(--section-background-color) !important;
+  color: #05386B !important;
+  height: 100vh;
+}
+.calendar-content{
+  padding-bottom: 150px !important;
+}
+
+/* --------- */
+/* Concert List */
+/* --------- */
+
+.concert-list {
+  padding: 8rem 0 2rem !important;
+  position: relative !important;
+  background-image: var(--section-background-color) !important;
+  color: #05386B !important;
+ height: 100vh;
+ padding-bottom: 150px !important;
+}
+.concert-list-content{
+ height: fit-content;
+ padding-bottom: 150px !important;
+}
+
+/* --------- */
+/* About */
+/* --------- */
+
+.about-section {
+  position: relative !important;
+  padding-top: 150px !important;
+  padding-bottom: 30px !important;
+  background-image: var(--section-background-color) !important;
+  color: #05386B !important;
+  height: 100vh;
+}
+
 
 /* --------- */
 /*Scrollbar   */
@@ -203,177 +277,6 @@ button:focus {
 
 
 /* --------- */
-/* Home section */
-/* --------- */
-.home-header {
-  padding-top: 60px !important;
-
-}
-
-.home-section {
-  position: static;
-  height: calc(100vh - 55px);
-  z-index: -1;
-  background-image: var(--image-gradient);
-  background-position: top center;
-  background-repeat: no-repeat;
-  padding-bottom: 30px !important;
-  padding-top: 0px !important;
-  padding-bottom:60px;
-}
-
-.home-content {
-  padding: 8rem 0 2rem !important;
-  color: #5CDB95;
-
-  text-align: center;
-}
-
-
-
-
-
-
-
-
-.home-about-section {
-  position: absolute;
-  padding-bottom: 0 !important;
-  padding-top: 50px !important;
-  background-color: #5CDB95;
-}
-
-.home-about-description {
-  color: #EDF5E1!important;
-  padding-top: 80px !important;
-  padding-bottom: 20px !important;
-  text-align: center;
-}
-
-.home-about-body {
-  padding-top: 20px;
-  font-size: 1.2em !important;
-  text-align: left;
-}
-
-.home-about-social {
-  text-align: center !important;
-  padding-top: 25px;
-  color: #EDF5E1 !important;
-}
-
-.home-about-social-links {
-  justify-content: center !important;
-  padding-top: 15px !important;
-  display: inline-block !important;
-  position: relative !important;
-  padding-inline-start: 0 !important;
-}
-
-.home-social-icons {
-  position: relative !important;
-  display: inline-block !important;
-  width: 40px !important;
-  height: 40px !important;
-  text-align: center !important;
-  font-size: 1.2em !important;
-  line-height: 2em !important;
-  background: #EDF5E1!important;
-  border-radius: 50% !important;
-  transition: 0.5s !important;
-}
-
-.home-social-icons::before {
-  content: "";
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: #05386B;
-  transition: 0.5s;
-  transform: scale(0.9);
-  z-index: -1;
-}
-
-.home-social-icons:hover::before {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px #05386B;
-}
-
-.home-social-icons:hover {
-  color: #05386B;
-  box-shadow: 0 0 5px #05386B;
-  text-shadow: 0 0 2px #05386B;
-}
-
-.social-icons {
-  display: inline-block !important;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-.icon-colour {
-  color: #05386B!important;
-}
-
-
-
-
-
-
-/* --------- */
-/* Calendar */
-/* --------- */
-
-.calendar-page{
-  position: relative !important;
-  padding-top: 150px !important;
-  padding-bottom: 50px !important;
-  background-image: var(--section-background-color) !important;
-  color: #05386B !important;
-  height: 100vh;
-}
-.calendar-content{
-  padding-bottom: 150px !important;
-}
-
-/* --------- */
-/* Concert List */
-/* --------- */
-
-.concert-list {
-  padding: 8rem 0 2rem !important;
-  position: relative !important;
-  background-image: var(--section-background-color) !important;
-  color: #05386B !important;
- height: 100vh;
- padding-bottom: 150px !important;
-}
-.concert-list-content{
- height: fit-content;
- padding-bottom: 150px !important;
-}
-
-/* --------- */
-/* About */
-/* --------- */
-
-.about-section {
-  position: relative !important;
-  padding-top: 150px !important;
-  padding-bottom: 30px !important;
-  background-image: var(--section-background-color) !important;
-  color: #05386B !important;
-  height: 100vh;
-}
-
-
-
-
-
-/* --------- */
 /* Footer */
 /* --------- */
 .footer {
@@ -415,3 +318,51 @@ button:focus {
   margin-bottom: 0.5em !important;
   padding: 0 !important;
 }
+.footer-social-icons {
+  position: relative !important;
+  display: inline-block !important;
+  width: 40px !important;
+  height: 40px !important;
+  text-align: center !important;
+  font-size: 1.2em !important;
+  line-height: 2em !important;
+  background: #EDF5E1!important;
+  border-radius: 50% !important;
+  transition: 0.5s !important;
+}
+
+.footer-social-icons::before {
+  content: "";
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #05386B;
+  transition: 0.5s;
+  transform: scale(0.9);
+  z-index: -1;
+}
+
+.footer-social-icons:hover::before {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #05386B;
+}
+
+.footer-social-icons:hover {
+  color: #05386B;
+  box-shadow: 0 0 5px #05386B;
+  text-shadow: 0 0 2px #05386B;
+}
+
+.social-icons {
+  display: inline-block !important;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.icon-colour {
+  color: #05386B!important;
+}
+

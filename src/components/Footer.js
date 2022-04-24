@@ -27,7 +27,7 @@ function Footer() {
                
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="icon-colour  home-social-icons"
+                className="icon-colour  footer-social-icons"
               >
                 <AiFillGithub />
               </a>
@@ -38,7 +38,7 @@ function Footer() {
                 style={{ color: "white" }}
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="icon-colour  home-social-icons"
+                className="icon-colour  footer-social-icons"
               >
                 <AiOutlineTwitter />
               </a>
@@ -46,7 +46,7 @@ function Footer() {
             <li className="social-icons">
               <a
                 href="https://www.linkedin.com/"
-                className="icon-colour  home-social-icons"
+                className="icon-colour  footer-social-icons"
                 style={{ color: "white" }}
                 target="_blank" 
                 rel="noopener noreferrer"
