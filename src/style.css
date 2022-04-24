@@ -348,10 +348,12 @@ button:focus {
   position: relative !important;
   background-image: var(--section-background-color) !important;
   color: #05386B !important;
-  height: fit-content;
+ height: 100vh;
+ padding-bottom: 150px !important;
 }
 .concert-list-content{
-
+ height: fit-content;
+ padding-bottom: 150px !important;
 }
 
 /* --------- */

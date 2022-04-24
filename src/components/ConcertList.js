@@ -4,6 +4,8 @@ import { PaginatedList } from "react-paginated-list";
 
 
 let concerts = [];
+let pages = 0;
+let currentconcertpage = 1;
 async function getConcerts() {
 
 
@@ -27,7 +29,9 @@ async function getConcerts() {
       console.log(data)
       data = JSON.parse(JSON.stringify(data));
       console.log(data['resultsPage']['results']['event'])
-     concerts = data['resultsPage']['results']['event'];
+      concerts = data['resultsPage']['results']['event'];
+      pages = data['resultsPage']['totalEntries'] / 50;
+      currentconcertpage = data['resultsPage']['page'];
   })
   .catch(e => console.log(e));
 
@@ -39,7 +43,7 @@ function ConcertList() {
   getConcerts();
   
   return (
-    <Container fluid className="concert-list" id="concert">
+    
       <PaginatedList
         list={concerts}
         itemsPerPage={50}
@@ -55,7 +59,9 @@ function ConcertList() {
                 <div key={id}>
                   {item.displayName}<br />
                   {item.location['city']}<br />
+                  
                 </div>
+                
               );
             })}
           </>
@@ -63,7 +69,7 @@ function ConcertList() {
       />
 
 
-    </Container>
+    
 
 
   );
