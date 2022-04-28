@@ -1,11 +1,13 @@
 import React from "react";
-import { Container, Row } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { PaginatedList } from "react-paginated-list";
 
 
-let concerts = [];
-let pages = 0;
-let currentconcertpage = 1;
+var concerts = [];
+var pages = 0;
+var current_page = 1;
+var total_entries = 0;
+
 async function getConcerts() {
 
 
@@ -20,7 +22,7 @@ async function getConcerts() {
   })
     .then(response => {
       if (response.ok) {
-        console.log(response);
+        
         return response.json();
       }
       throw new Error('Something went wrong');
@@ -30,13 +32,16 @@ async function getConcerts() {
       data = JSON.parse(JSON.stringify(data));
       console.log(data['resultsPage']['results']['event'])
       concerts = data['resultsPage']['results']['event'];
-      pages = data['resultsPage']['totalEntries'] / 50;
-      currentconcertpage = data['resultsPage']['page'];
+      total_entries = data['resultsPage']['totalEntries']; 
+      pages = Math.round(total_entries/ 50);
+      current_page = data['resultsPage']['page'];
+      console.log(pages);
   })
   .catch(e => console.log(e));
 
   return true;
 }
+
 
 
 function ConcertList() {
@@ -47,21 +52,28 @@ function ConcertList() {
       <PaginatedList
         list={concerts}
         itemsPerPage={50}
-        renderList={(list) => (
+        currentPage={current_page}
+        displayRange={7}
+        renderList={(list, displayRange) => (
           <>
             {list.map((item, id) => {
-              if(list.length == 0){
-                return ( <div>
-                  <strong>No Data</strong>
-                </div>)
-              }
+              
               return (
-                <div key={id}>
-                  {item.displayName}<br />
-                  {item.location['city']}<br />
-                  
-                </div>
+               
+                <div  key={id} className="list-group-item" id="list-item"> <div><p>{displayRange}</p></div>
+                <Row>
+                  <Col md="4">
+                    {item.displayName}
+                  </Col>
+                  <Col md="4">
+                    {item.location['city']}
+                  </Col>
+                  <Col md="4">
+                    {item.type}
+                  </Col>
                 
+                </Row>
+                </div>
               );
             })}
           </>

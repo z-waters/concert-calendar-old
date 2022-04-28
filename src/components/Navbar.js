@@ -31,6 +31,7 @@ function NavBar() {
       expand="md"
       className={navColour ? "sticky" : "navbar"}
     >
+
       <Container>
 
         <Navbar.Toggle
@@ -42,22 +43,31 @@ function NavBar() {
           <span></span>
           <span></span>
           <span></span>
+
         </Navbar.Toggle>
+
         <Navbar.Collapse id="responsive-navbar-nav">
+
           <Nav className="ms-auto" defaultActiveKey="#home">
             <Nav.Item>
-              <Nav.Link as={Link} to="/" onClick={() => updateExpanded(false)}>
+              <Nav.Link 
+                as={Link} 
+                to="/" 
+                onClick={() => updateExpanded(false)}>
+
                 <GiMusicalNotes style={{ marginBottom: "2px" }} /> Home
+
               </Nav.Link>
             </Nav.Item>
-
             <Nav.Item>
               <Nav.Link
                 as={Link}
                 to="/calendar"
                 onClick={() => updateExpanded(false)}
               >
+
                 <BsCalendar2Range style={{ marginBottom: "2px" }} /> Calendar
+
               </Nav.Link>
             </Nav.Item>
 
@@ -68,6 +78,7 @@ function NavBar() {
                 onClick={() => updateExpanded(false)}
               >
                 <BsMusicNoteList style={{marginBottom: "2px" }} /> Events
+
               </Nav.Link>
             </Nav.Item>
 
@@ -77,7 +88,9 @@ function NavBar() {
                 to="/about"
                 onClick={() => updateExpanded(false)}
               >
+
                 <CgFileDocument style={{ marginBottom: "2px" }} /> About
+
               </Nav.Link>
             </Nav.Item>
 
@@ -90,13 +103,19 @@ function NavBar() {
                 to="#"
                 onClick={() => updateExpanded(false)}
               >
+
                 <RiLogoutBoxRLine style={{ marginBottom: "2px" }} /> Sign out
+                
               </Nav.Link>
             </Nav.Item>
           </Nav>
+
         </Navbar.Collapse>
+
       </Container>
+
     </Navbar>
+
   );
 }
 
