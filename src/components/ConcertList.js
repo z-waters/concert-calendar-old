@@ -39,13 +39,7 @@ async function fetchTest(apikey, venueId) {
       console.log(error);
     })
 }
-function timeCheck(timeString) {
-  if (timeString != null) {
-    return new Date(item.start.datetime).toLocaleTimeString();
-  } else {
-    return "N/A";
-  }
-}
+
 
 function ConcertList() {
   var apikey = "m9qVXGhOvdZmmUQs";
