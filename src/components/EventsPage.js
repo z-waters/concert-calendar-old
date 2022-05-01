@@ -18,22 +18,22 @@ function EventsPage() {
         <div className="list-group-item" id="list-item"> 
         <Row>
                   <Col md="3">
-                    Event
+                  <strong>Event</strong>
                   </Col>
                   <Col md="2">
-                    Location
+                  <strong>Location</strong>
                   </Col>
                   <Col md="1">
-                    Date
+                  <strong>Date</strong>
                   </Col>
                   <Col md="1">
-                    Time
+                  <strong>Time</strong>
                   </Col>
                   <Col md="3">
-                    Venue
+                  <strong>Venue</strong>
                   </Col>
                   <Col md="2">
-                    Scheduled Performers
+                  <strong>Scheduled Performers</strong>
                   </Col>
                 
                 </Row>
