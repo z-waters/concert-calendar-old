@@ -47,7 +47,7 @@ function Footer() {
               <a
                 href="https://www.linkedin.com/"
                 className="icon-colour  footer-social-icons"
-                style={{ color: "white" }}
+                style={{ color: "black" }}
                 target="_blank" 
                 rel="noopener noreferrer"
               >
