@@ -6,6 +6,7 @@ lighter greenL #8EE4AF
 Tan for text: #EDF5E1
 
 */
+
 html {
   --section-background-color: white;
 
@@ -155,6 +156,7 @@ button:focus {
   transition: all 0.3s ease-out 0s !important;
   padding: 0.3rem 2rem !important;
   font-size: 1.2rem !important;
+  background-color: black;
 }
 
 .navbar-toggler {
@@ -228,7 +230,7 @@ button:focus {
 }
 
 .navbar-nav .nav-link {
-  color: black !important;
+  color: white !important;
   padding-right: 1rem !important;
   padding-left: 1rem !important;
 }
@@ -262,7 +264,7 @@ button:focus {
   height: 5px;
   width: 0;
   border-radius: 16px;
-  background: black;
+  background: gold;
   bottom: 1px;
   left: 0;
   z-index: -1;
