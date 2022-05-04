@@ -155,7 +155,7 @@ button:focus {
   position: fixed !important;
   transition: all 0.3s ease-out 0s !important;
   padding: 0.3rem 2rem !important;
-  font-size: 1.2rem !important;
+  font-size: 1.5rem !important;
   background-color: black;
 }
 
@@ -225,8 +225,10 @@ button:focus {
 }
 
 .logo {
-  height: 1.4em !important;
-  width: 2.5em !important;
+  height: 4rem;
+  padding: .3rem;
+  width: auto;
+  margin-left: 8rem;
 }
 
 .navbar-nav .nav-link {
@@ -275,7 +277,19 @@ button:focus {
   width: 100%;
 }
 
+/* --------- */
+/* Banner */
+/* --------- */
 
+.banner {
+  margin-top: 4rem;
+  height: 300px;
+  background-image: url("/src/assets/images/banner-long.jpg");
+  text-align: center;
+}
+
+.banner-text {
+}
 
 /* --------- */
 /* Footer */

@@ -32,6 +32,8 @@ function NavBar() {
       className={navColour ? "sticky" : "navbar"}
     >
 
+      <img className="logo" src={require("../assets/images/logo2.png")} alt="gigpal logo" />
+
       <Container>
 
         <Navbar.Toggle
@@ -50,9 +52,9 @@ function NavBar() {
 
           <Nav className="ms-auto" defaultActiveKey="#home">
             <Nav.Item>
-              <Nav.Link 
-                as={Link} 
-                to="/" 
+              <Nav.Link
+                as={Link}
+                to="/"
                 onClick={() => updateExpanded(false)}>
 
                 <GiMusicalNotes style={{ marginBottom: "2px" }} /> HOME
@@ -77,7 +79,7 @@ function NavBar() {
                 to="/events"
                 onClick={() => updateExpanded(false)}
               >
-                <BsMusicNoteList style={{marginBottom: "2px" }} /> EVENTS
+                <BsMusicNoteList style={{ marginBottom: "2px" }} /> EVENTS
 
               </Nav.Link>
             </Nav.Item>
@@ -97,7 +99,7 @@ function NavBar() {
 
 
             <Nav.Item>
-             
+
               <Nav.Link
                 as={Link}
                 to="#"
@@ -105,7 +107,7 @@ function NavBar() {
               >
 
                 <RiLogoutBoxRLine style={{ marginBottom: "2px" }} /> SIGN OUT
-                
+
               </Nav.Link>
             </Nav.Item>
           </Nav>

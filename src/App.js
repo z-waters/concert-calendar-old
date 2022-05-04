@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import About from "./components/About/About";
 import EventsPage from "./components/EventsPage";
 import Calendar from "./components/Calendar";
+import Banner from "./components/Banner"
 import {
   BrowserRouter as Router,
   Route,
@@ -34,6 +35,7 @@ function App() {
     <Router>
       
       <div className="App" >
+        <Banner />
         <Navbar />
         <ScrollToTop />
         
