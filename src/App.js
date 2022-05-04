@@ -12,7 +12,7 @@ import {
   Navigate
 } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
-import './App.css';
+
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "./components/Footer";
