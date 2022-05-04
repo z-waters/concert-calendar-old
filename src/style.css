@@ -58,7 +58,6 @@ button:focus {
   text-align: center;
 }
 
-
 /* --------- */
 /* Calendar */
 /* --------- */
@@ -72,7 +71,6 @@ button:focus {
   height: 100vh;
 }
 .calendar-content{
- 
   padding-bottom: 150px !important;
 }
 
@@ -81,11 +79,9 @@ button:focus {
 /* --------- */
 #list-item{
   background-color: white; 
-  min-height: 1in;
+  min-height: 10px;
   color: black;
   text-align: center;
-  vertical-align: middle;
-  
 }
 .concert-list {
   padding: 8rem 0 2rem !important;
@@ -93,13 +89,16 @@ button:focus {
   background: var(--section-background-color) !important;
   color: black !important;
   height: 100vh;
- padding-bottom: 150px !important;
- 
+  padding-bottom: 150px !important;
 }
 .concert-list-content{
  height: fit-content;
  padding-bottom: 150px !important;
 }
+.list-group-item{
+  border-radius: 5px;
+}
+
 
 /* --------- */
 /* About */

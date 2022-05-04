@@ -3,64 +3,65 @@ import { Container, Row, Col } from "react-bootstrap";
 import { PaginatedList } from "react-paginated-list";
 import axios from "axios";
 
-var concerts = [];
-var pages = 0;
-var current_page = 1;
-var total_entries = 0;
+// var concerts = [];
+// var pages = 0;
+// var current_page = 1;
+// var total_entries = 0;
 
 
-async function fetchTest(apikey, venueId) {
-  axios.get('https://api.songkick.com/api/3.0/events.json?apikey=' + apikey + '&location=sk:' + venueId)
-    .then(function (response) {
-      var data = response.data;
+// async function fetchTest(apikey, venueId) {
+//   axios.get('https://api.songkick.com/api/3.0/events.json?apikey=' + apikey + '&location=sk:' + venueId)
+//     .then(function (response) {
+//       var data = response.data;
 
-      console.log(data);
-      concerts = data.resultsPage.results.event;
+//       console.log(data);
+//       concerts = data.resultsPage.results.event;
 
-      concerts.forEach(item => {
-        if (item.start.time == null) {
-          item.start.time = "N/A";
-        }
-        var temp = ""
-        item.performance.forEach(performer => {
-          temp += performer.displayName;
-          if (item.performance.indexOf(performer) < item.performance.length - 1) {
-            temp += ", ";
-          }
-        });
-        item.performance = temp;
-      });
-      total_entries = data.resultsPage.totalEntries;
-      pages = Math.round(total_entries / 50);
-      current_page = data.resultsPage.page;
-      console.log(concerts);
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
-}
+//       concerts.forEach(item => {
+//         if (item.start.time == null) {
+//           item.start.datetime = item.start.date;
+//           item.start.time = "N/A";
+//         }else{
+//           //formating time
+//           item.start.time = new Date(item.start.datetime).toLocaleTimeString();
+//           var splitTime = item.start.time.split(":");
+//           item.start.time = splitTime[0]+ ":" + splitTime[1] + splitTime[2].substring(2,splitTime[2].length);
+//         }
+//         var temp = "";
+//         item.performance.forEach(performer => {
+//           temp += performer.displayName;
+//           if (item.performance.indexOf(performer) < item.performance.length - 1) {
+//             temp += ", ";
+//           }
+//         });
+//         item.performance = temp;
+//       });
+//       total_entries = data.resultsPage.totalEntries;
+//       pages = Math.round(total_entries / 50);
+//       current_page = data.resultsPage.page;
+//       console.log(concerts);
+//     })
+//     .catch(function (error) {
+//       console.log(error);
+//     })
+// }
 
 
-function ConcertList() {
-  var apikey = "m9qVXGhOvdZmmUQs";
-  var seattleEventId = '2846';
-  fetchTest(apikey, seattleEventId);
-
-
+function ConcertList(props) {
+  // var apikey = "m9qVXGhOvdZmmUQs";
+  // var seattleEventId = '2846';
+  // fetchTest(apikey, seattleEventId);
+  console.log("DATA PASSES \n" + props.data);
+    var list= props.data.concertList;
   return (
    
-      <PaginatedList
-        list={concerts}
-        itemsPerPage={50}
-        currentPage={current_page}
-        displayRange={7}
-        renderList={(list) => (
-          <>
-            {list.map((item, id) => {
+        
+       <div>
+            {list.map((item) => {
 
               return (
 
-                <div key={id} className="list-group-item" id="list-item">
+                <li href="#" className="list-group-item list-group-item-action"  id="list-item">
                   <Row>
                     <Col md="3">
                       {item.displayName.split(" (")[0]}
@@ -72,7 +73,7 @@ function ConcertList() {
                       {new Date(item.start.datetime).toLocaleDateString()}
                     </Col>
                     <Col md="1">
-                      {new Date(item.start.datetime).toLocaleTimeString()}
+                      {item.start.time}
                     </Col>
                     <Col md="3">
                       {item.venue.displayName}
@@ -82,12 +83,12 @@ function ConcertList() {
                     </Col>
 
                   </Row>
-                </div>
+                </li>
               );
             })}
-          </>
-        )}
-      />
+        </div>
+        
+      
 
 
 
