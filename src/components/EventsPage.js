@@ -20,7 +20,8 @@ function EventsPage(props) {
   };
  
 
-    axios.get('https://api.songkick.com/api/3.0/events.json?apikey=' + apiProp.apikey + '&location=sk:' + apiProp.seattleEventId)
+    //axios.get('https://api.songkick.com/api/3.0/events.json?apikey=' + apiProp.apikey + '&location=sk:' + apiProp.seattleEventId) //Concerts by metro area "Seattle"
+    axios.get('https://api.songkick.com/api/3.0/venues/3154/calendar.json?apikey=m9qVXGhOvdZmmUQs')//Concerts by venue "Shobox"
       .then(function (response) {
 
         var data = response.data;
