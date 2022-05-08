@@ -32,6 +32,8 @@ function NavBar() {
       className={navColour ? "sticky" : "navbar"}
     >
 
+      <img className="logo" src={require("../assets/images/logo2.png")} alt="gigpal logo" />
+
       <Container>
 
         <Navbar.Toggle
@@ -50,12 +52,12 @@ function NavBar() {
 
           <Nav className="ms-auto" defaultActiveKey="#home">
             <Nav.Item>
-              <Nav.Link 
-                as={Link} 
-                to="/" 
+              <Nav.Link
+                as={Link}
+                to="/"
                 onClick={() => updateExpanded(false)}>
 
-                <GiMusicalNotes style={{ marginBottom: "2px" }} /> Home
+                <GiMusicalNotes style={{ marginBottom: "2px" }} /> HOME
 
               </Nav.Link>
             </Nav.Item>
@@ -66,7 +68,7 @@ function NavBar() {
                 onClick={() => updateExpanded(false)}
               >
 
-                <BsCalendar2Range style={{ marginBottom: "2px" }} /> Calendar
+                <BsCalendar2Range style={{ marginBottom: "2px" }} /> CALENDAR
 
               </Nav.Link>
             </Nav.Item>
@@ -77,7 +79,7 @@ function NavBar() {
                 to="/events"
                 onClick={() => updateExpanded(false)}
               >
-                <BsMusicNoteList style={{marginBottom: "2px" }} /> Events
+                <BsMusicNoteList style={{ marginBottom: "2px" }} /> EVENTS
 
               </Nav.Link>
             </Nav.Item>
@@ -89,7 +91,7 @@ function NavBar() {
                 onClick={() => updateExpanded(false)}
               >
 
-                <CgFileDocument style={{ marginBottom: "2px" }} /> About
+                <CgFileDocument style={{ marginBottom: "2px" }} /> ABOUT
 
               </Nav.Link>
             </Nav.Item>
@@ -97,15 +99,15 @@ function NavBar() {
 
 
             <Nav.Item>
-             
+
               <Nav.Link
                 as={Link}
                 to="#"
                 onClick={() => updateExpanded(false)}
               >
 
-                <RiLogoutBoxRLine style={{ marginBottom: "2px" }} /> Sign out
-                
+                <RiLogoutBoxRLine style={{ marginBottom: "2px" }} /> SIGN OUT
+
               </Nav.Link>
             </Nav.Item>
           </Nav>

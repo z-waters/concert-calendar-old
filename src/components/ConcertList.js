@@ -1,90 +1,133 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { PaginatedList } from "react-paginated-list";
+import axios from "axios";
+
+// var concerts = [];
+// var pages = 0;
+// var current_page = 1;
+// var total_entries = 0;
 
 
-var concerts = [];
-var pages = 0;
-var current_page = 1;
-var total_entries = 0;
+// async function fetchTest(apikey, venueId) {
+//   axios.get('https://api.songkick.com/api/3.0/events.json?apikey=' + apikey + '&location=sk:' + venueId)
+//     .then(function (response) {
+//       var data = response.data;
 
-async function getConcerts() {
+//       console.log(data);
+//       concerts = data.resultsPage.results.event;
 
-
-  let fetchQuery = 'https://api.songkick.com/api/3.0/events.json?apikey=m9qVXGhOvdZmmUQs&location=sk:2846';
-
-  await fetch(fetchQuery, {
-    //mode: 'no-cors',
-    method: 'GET',
-    headers: {
-      Accept: 'application/json',
-    }
-  })
-    .then(response => {
-      if (response.ok) {
-        
-        return response.json();
-      }
-      throw new Error('Something went wrong');
-    })
-    .then(data => {
-      console.log(data)
-      data = JSON.parse(JSON.stringify(data));
-      console.log(data['resultsPage']['results']['event'])
-      concerts = data['resultsPage']['results']['event'];
-      total_entries = data['resultsPage']['totalEntries']; 
-      pages = Math.round(total_entries/ 50);
-      current_page = data['resultsPage']['page'];
-      console.log(pages);
-  })
-  .catch(e => console.log(e));
-
-  return true;
-}
+//       concerts.forEach(item => {
+//         if (item.start.time == null) {
+//           item.start.datetime = item.start.date;
+//           item.start.time = "N/A";
+//         }else{
+//           //formating time
+//           item.start.time = new Date(item.start.datetime).toLocaleTimeString();
+//           var splitTime = item.start.time.split(":");
+//           item.start.time = splitTime[0]+ ":" + splitTime[1] + splitTime[2].substring(2,splitTime[2].length);
+//         }
+//         var temp = "";
+//         item.performance.forEach(performer => {
+//           temp += performer.displayName;
+//           if (item.performance.indexOf(performer) < item.performance.length - 1) {
+//             temp += ", ";
+//           }
+//         });
+//         item.performance = temp;
+//       });
+//       total_entries = data.resultsPage.totalEntries;
+//       pages = Math.round(total_entries / 50);
+//       current_page = data.resultsPage.page;
+//       console.log(concerts);
+//     })
+//     .catch(function (error) {
+//       console.log(error);
+//     })
+// }
 
 
-
-function ConcertList() {
-  getConcerts();
-  
+function ConcertList(props) {
+  // var apikey = "m9qVXGhOvdZmmUQs";
+  // var seattleEventId = '2846';
+  // fetchTest(apikey, seattleEventId);
+  console.log("DATA PASSES \n" + props.data);
+    var list= props.data.concertList;
   return (
-    
-      <PaginatedList
-        list={concerts}
-        itemsPerPage={50}
-        currentPage={current_page}
-        displayRange={7}
-        renderList={(list, displayRange) => (
-          <>
-            {list.map((item, id) => {
-              
+   
+        
+       <div>
+            {list.map((item) => {
+
               return (
-               
-                <div  key={id} className="list-group-item" id="list-item"> <div><p>{displayRange}</p></div>
-                <Row>
-                  <Col md="4">
-                    {item.displayName}
-                  </Col>
-                  <Col md="4">
-                    {item.location['city']}
-                  </Col>
-                  <Col md="4">
-                    {item.type}
-                  </Col>
-                
-                </Row>
-                </div>
+
+                <li href="#" className="list-group-item list-group-item-action"  id="list-item">
+                  <Row>
+                    <Col md="3">
+                      {item.displayName.split(" (")[0]}
+                    </Col>
+                    <Col md="2">
+                      {item.location['city'].substring(0, item.location['city'].length - 4)}
+                    </Col>
+                    <Col md="1">
+                      {new Date(item.start.datetime).toLocaleDateString()}
+                    </Col>
+                    <Col md="1">
+                      {item.start.time}
+                    </Col>
+                    <Col md="3">
+                      {item.venue.displayName}
+                    </Col>
+                    <Col md="2">
+                      {item.performance}
+                    </Col>
+
+                  </Row>
+                </li>
               );
             })}
-          </>
-        )}
-      />
+        </div>
+        
+      
 
 
-    
 
 
   );
 }
 
 export default ConcertList;
+
+
+
+ //metroarea id by name 
+//https://api.songkick.com/api/3.0/search/locations.json?query={input}&apikey=m9qVXGhOvdZmmUQs
+
+///upcoming events by artist name
+//https://api.songkick.com/api/3.0/artists/{artist_id}/calendar.json?apikey={your_api_key}
+
+//event details 
+//https://api.songkick.com/api/3.0/events/{event_id}.json?apikey={your_api_key}
+
+//metroarea upcoming events
+//https://api.songkick.com/api/3.0/metro_areas/{metro_area_id}/calendar.json?apikey={your_api_key}
+
+//get venue id by name
+//https://api.songkick.com/api/3.0/search/venues.json?query={venue_name}&apikey={your_api_key}
+
+//upcoming events by venue
+//https://api.songkick.com/api/3.0/venues/{venue_id}/calendar.json?apikey={your_api_key}
+
+// ageRestriction
+// displayName
+// flaggedAsEnded
+// id
+// location{city,long,lat}
+// performance[]
+// start{data, datetime,time}
+// popularity
+// venue{id,displayName}
+//let fetchQuery = 'https://api.songkick.com/api/3.0/events.json?apikey=m9qVXGhOvdZmmUQs&location=sk:2846';
+
+
+

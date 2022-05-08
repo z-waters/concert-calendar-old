@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import About from "./components/About/About";
 import EventsPage from "./components/EventsPage";
 import Calendar from "./components/Calendar";
+import Banner from "./components/Banner"
 import {
   BrowserRouter as Router,
   Route,
@@ -12,7 +13,7 @@ import {
   Navigate
 } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
-import './App.css';
+
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "./components/Footer";
@@ -34,6 +35,7 @@ function App() {
     <Router>
       
       <div className="App" >
+        <Banner />
         <Navbar />
         <ScrollToTop />
         

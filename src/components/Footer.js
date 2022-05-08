@@ -1,10 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import {
-  AiFillGithub,
-  AiOutlineTwitter,
-  AiFillInstagram,
-} from "react-icons/ai";
+import {AiFillGithub, AiOutlineTwitter} from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 
 function Footer() {
@@ -47,7 +43,7 @@ function Footer() {
               <a
                 href="https://www.linkedin.com/"
                 className="icon-colour  footer-social-icons"
-                style={{ color: "white" }}
+                style={{ color: "black" }}
                 target="_blank" 
                 rel="noopener noreferrer"
               >
