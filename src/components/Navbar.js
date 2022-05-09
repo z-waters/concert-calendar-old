@@ -8,8 +8,6 @@ import { BsCalendar2Range, BsMusicNoteList } from "react-icons/bs";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import { CgFileDocument } from "react-icons/cg";
 
-
-
 function NavBar() {
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
@@ -76,10 +74,10 @@ function NavBar() {
             <Nav.Item>
               <Nav.Link
                 as={Link}
-                to="/events"
+                to="/concerts"
                 onClick={() => updateExpanded(false)}
               >
-                <BsMusicNoteList style={{ marginBottom: "2px" }} /> EVENTS
+                <BsMusicNoteList style={{ marginBottom: "2px" }} /> CONCERTS
 
               </Nav.Link>
             </Nav.Item>

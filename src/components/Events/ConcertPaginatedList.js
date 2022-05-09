@@ -1,13 +1,10 @@
-import React, { Container, useState, useEffect } from 'react';
-import axios from "axios";
-import { PaginatedList } from "react-paginated-list";
+import React from 'react';
 import { Row, Col } from "react-bootstrap";
 
 function ConcertPaginatedList(props) {
-
-
-    console.log("DATA PASSES \n" + props.data);
+    
     var list= props.data.concertList;
+
   return (
    
         
@@ -42,12 +39,6 @@ function ConcertPaginatedList(props) {
               );
             })}
         </div>
-        
-      
-
-
-
-
   );
 
 

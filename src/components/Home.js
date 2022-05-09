@@ -1,28 +1,26 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
 import Footer from "./Footer";
-
+import Searchbar from "./Searchbar";
 
 function Home() {
   return (
+    <div>
+      <Container fluid className="home-section">
+        <Container className="home-content">
 
-    <Container fluid className="home-section">
-      <Container className="home-content">
+          <h1 className="project-heading">
+            <strong className="blue">Home Header</strong>
+          </h1>
+          
 
-        <h1 className="project-heading">
-          <strong className="blue">Home Header</strong>
-        </h1> 
+          <p className="blue">we need content here!</p>
 
-        <p className="blue">we need content here!</p>
+        </Container>
 
-      </Container> 
-    </Container>
-   
-
-
-    
-
-
+      </Container>
+      <Footer />
+    </div>
   );
 }
 
