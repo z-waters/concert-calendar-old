@@ -1,18 +1,29 @@
-import React from "react";
-import { Container, Row, Col} from "react-bootstrap";
-import { MDBCol, MDBIcon} from "mdbreact";
+import React, { useState, useEffect } from 'react';
+import { Container} from "react-bootstrap";
 
-const Searchbar = () => {
-    return (
+function Searchbar(props)  {
+    const [searchQuery, setSearchQuery] = useState('');
+
+
     
-        
-        <MDBCol md="6">
-        
-         
-            <input className="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search" />
-        
-        </MDBCol>
-      );
+
+
+    return (
+
+
+        <div>
+            <Container fluid className="concert-page">
+                <form className="searchbox">
+                    <input type="text" /><button style={{  float: "right"}}> Click</button>
+                    
+                </form>
+                
+
+            </Container>
+
+            
+        </div>
+    );
 }
 
 export default Searchbar;
