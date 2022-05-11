@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navigation/Navbar";
 import Home from "./components/Home";
-import About from "./components/About/About";
+import About from "./components/about/About";
 import EventsPage from "./components/EventsPage";
 import Calendar from "./components/Calendar";
 import Banner from "./components/Banner"
@@ -16,7 +16,7 @@ import ScrollToTop from "./components/ScrollToTop";
 
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Footer from "./components/Footer";
+import Footer from "./components/footer/Footer";
 
 
 

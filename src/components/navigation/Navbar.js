@@ -7,6 +7,7 @@ import { GiMusicalNotes } from "react-icons/gi";
 import { BsCalendar2Range, BsMusicNoteList } from "react-icons/bs";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import { CgFileDocument } from "react-icons/cg";
+import "./Navbar.css";
 
 
 
@@ -32,7 +33,7 @@ function NavBar() {
       className={navColour ? "sticky" : "navbar"}
     >
 
-      <img className="logo" src={require("../assets/images/logo2.png")} alt="gigpal logo" />
+      <img className="logo" src={require("../../assets/images/logo2.png")} alt="gigpal logo" />
 
       <Container>
 
