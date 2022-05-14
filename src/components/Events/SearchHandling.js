@@ -78,7 +78,17 @@ function SearchHandling(props) {
   }
   const [myData, setMyData] = useState(null);
   const [isLoaded, setisLoaded] = useState(false);
-  const[pageNumber, setPageNumber] = useState(1);
+  const[pageNumber, setPageNumber] = useState(0);
+  useEffect(() => {
+    setisLoaded(false);
+    getUpcomingEventsByClientIP();
+    console.log(myData);
+    console.log(props);
+
+  }, [pageNumber]);
+  const handlePageNumberChange = (page) =>{
+    setPageNumber(page);
+  }
 
   useEffect(() => {
     setisLoaded(false);
@@ -176,11 +186,11 @@ function SearchHandling(props) {
 
   if (!isLoaded) {
     return (
-      <ConcertPaginatedList data={emptyData} />
+      <ConcertPaginatedList data={emptyData} onSetPageNumber={handlePageNumberChange}/>
     );
   }
   return (
-    <ConcertPaginatedList data={myData} onSetPageNumber ={setPageNumber}/>
+    <ConcertPaginatedList data={myData} onSetPageNumber={handlePageNumberChange}/>
   );
 }
 export default SearchHandling;

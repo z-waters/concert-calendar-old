@@ -1,14 +1,32 @@
-import React from 'react';
+import { incrementalMemo } from '@tanstack/react-table';
+import React,{ useEffect, useState } from 'react';
 import { Container, Row, Col } from "react-bootstrap";
 
 function ConcertPaginatedList(props) {
 
   const list = props.data.concertList;
+  const [currentPage, setCurrentPage] = useState(props.data.currentPage);
 
-  const currentPage = props.data.currentPage;
   const numberOfPages = Math.ceil(props.data.totalEntries / 50);
-  console.log("number of pages: " + numberOfPages);
 
+  function incrementPageNumber(){
+    if(currentPage != numberOfPages){
+     setCurrentPage(currentPage +1);
+      console.log(currentPage);
+    }
+  }
+ function decrementPageNumber() {
+    if(currentPage != 1){
+      setCurrentPage(currentPage -1);
+      console.log(currentPage);
+    }
+  }
+
+  useEffect(() => {
+    
+    console.log(currentPage);
+    props.onSetPageNumber(currentPage);
+  }, [currentPage]);
 
 if(list.length == 0){
   return (
@@ -86,6 +104,13 @@ if(list.length == 0){
       })} 
       </Container>
       </Container>
+      <button onClick={() => decrementPageNumber()}>
+       Previous
+      </button>
+      <button onClick={() => incrementPageNumber()}>
+       Next
+      </button>
+      <h4>Page {currentPage} of {numberOfPages}</h4>
     </div>
   );
 
