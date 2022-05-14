@@ -56,7 +56,7 @@ location{metroArea{country{displayName}, uri, state{displayName}, displayName, i
 import ConcertPaginatedList from "./ConcertPaginatedList";
 
 
-let returnData = {
+let emptyData = {
   concertList: [],
   totalEntries: 0,
   currentPage: 1
@@ -74,18 +74,19 @@ let apiProp = {
 
 function SearchHandling(props) {
   const localProps = {
-  ...props
-}
+    ...props
+  }
   const [myData, setMyData] = useState(null);
   const [isLoaded, setisLoaded] = useState(false);
-  //axios.get('https://api.songkick.com/api/3.0/events.json?apikey=' + apiProp.apikey + '&location=sk:' + apiProp.seattleEventId) //Concerts by metro area "Seattle"
+  const[pageNumber, setPageNumber] = useState(1);
+
   useEffect(() => {
     setisLoaded(false);
     getUpcomingEventsByClientIP();
     console.log(myData);
-    console.log(localProps);
+    console.log(props);
 
-  }, []);
+  }, [props.searchQuery, pageNumber]);
 
   const getUpcomingEventsByClientIP = async () => {
     const data = {
@@ -95,47 +96,43 @@ function SearchHandling(props) {
     }
     var getData;
 
-    if (localProps.searchQuery == '') {
+    if (props.searchQuery == '') {
 
       const metroAreaData = await axios.get('https://api.songkick.com/api/3.0/search/locations.json?location=clientip&apikey=' + apiProp.apikey);
       const metroAreaID = metroAreaData.data.resultsPage.results.location[0].metroArea.id;
-      getData = await axios.get('https://api.songkick.com/api/3.0/metro_areas/' + metroAreaID + '/calendar.json?apikey=' + apiProp.apikey );
-    
+      getData = await axios.get('https://api.songkick.com/api/3.0/metro_areas/' + metroAreaID + '/calendar.json?apikey=' + apiProp.apikey + '&page=' + pageNumber);
+
     } else {
-
-      switch (localProps.searchType) {
-
-        case "City Metro Area":
-          const metroAreaData = await axios.get('https://api.songkick.com/api/3.0/search/locations.json?query=' + props.searchQuery + '&apikey=' + apiProp.apikey);
-          const metroAreaResponse = metroAreaData.data.resultsPage.results;
-          if(metroAreaResponse.length < 1 ){
-            break;
-          } 
+        // may get incorrect city. need to add another drop down to choose state of city and crossrefrence after call to select the correct metro id
+      if (localProps.searchType == "City Metro Area") {
+        const metroAreaData = await axios.get('https://api.songkick.com/api/3.0/search/locations.json?query=' + props.searchQuery + '&apikey=' + apiProp.apikey);
+        const metroAreaResponse = metroAreaData.data.resultsPage.results;
+        if (metroAreaResponse.length != 0) {
           const metroAreaID = metroAreaResponse.location[0].metroArea.id;
-          getData = await axios.get('https://api.songkick.com/api/3.0/metro_areas/' + metroAreaID + '/calendar.json?apikey=' + apiProp.apikey);
+          getData = await axios.get('https://api.songkick.com/api/3.0/metro_areas/' + metroAreaID + '/calendar.json?apikey=' + apiProp.apikey + '&page=' + pageNumber);
+          console.log(getData);
+        }
 
-        case "Venue":
-          const venueData = await axios.get('https://api.songkick.com/api/3.0/search/venues.json?query=' + props.searchQuery + '&apikey=' + apiProp.apikey);
-          const venueDataResponse = venueData.data.resultsPage.results;
-          if(venueDataResponse.length < 1 ){
-            break;
-          } 
+      } else if (props.searchType == "Venue") {
+        const venueData = await axios.get('https://api.songkick.com/api/3.0/search/venues.json?query=' + props.searchQuery + '&apikey=' + apiProp.apikey);
+        const venueDataResponse = venueData.data.resultsPage.results;
+        if (venueDataResponse.length != 0) {
           const venueID = venueDataResponse.venue[0].id;
-          getData = await axios.get('https://api.songkick.com/api/3.0/metro_areas/' + venueID + '/calendar.json?apikey=' + apiProp.apikey);
+          getData = await axios.get('https://api.songkick.com/api/3.0/venues/' + venueID + '/calendar.json?apikey=' + apiProp.apikey);
+          console.log(getData);
+        }
 
-        case "Artist":
-          const artistData = await axios.get('https://api.songkick.com/api/3.0/search/artists.json?query=' + props.searchQuery + '&apikey=' + apiProp.apikey);
-          const artistDataResponse = artistData.data.resultsPage.results;
-          if(artistDataResponse.length < 1 ){
-            break;
-          } 
+      } else if (props.searchType == "Artist") {
+        const artistData = await axios.get('https://api.songkick.com/api/3.0/search/artists.json?query=' + props.searchQuery + '&apikey=' + apiProp.apikey + '&page=' + pageNumber);
+        const artistDataResponse = artistData.data.resultsPage.results;
+        if (artistDataResponse.length != 0) {
           const artistID = artistDataResponse.artist[0].id;
-          getData = await axios.get('https://api.songkick.com/api/3.0/metro_areas/' + artistID + '/calendar.json?apikey=' + apiProp.apikey);
+          getData = await axios.get('https://api.songkick.com/api/3.0/artists/' + artistID + '/calendar.json?apikey=' + apiProp.apikey);
+          console.log(getData);
+        }
 
-        default:
-
-          console.error("How did you get here?");
       }
+
     }
 
     data.concertList = getData.data.resultsPage.results.event;
@@ -166,7 +163,8 @@ function SearchHandling(props) {
     if (getData != null) {
       setMyData(data);
       setisLoaded(true);
-      
+    
+
     }
 
 
@@ -178,11 +176,11 @@ function SearchHandling(props) {
 
   if (!isLoaded) {
     return (
-      <ConcertPaginatedList data={returnData} />
+      <ConcertPaginatedList data={emptyData} />
     );
   }
   return (
-    <ConcertPaginatedList data={myData} />
+    <ConcertPaginatedList data={myData} onSetPageNumber ={setPageNumber}/>
   );
 }
 export default SearchHandling;

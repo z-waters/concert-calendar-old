@@ -3,8 +3,26 @@ import { Container, Row, Col } from "react-bootstrap";
 
 function ConcertPaginatedList(props) {
 
-  var list = props.data.concertList;
+  const list = props.data.concertList;
 
+  const currentPage = props.data.currentPage;
+  const numberOfPages = Math.ceil(props.data.totalEntries / 50);
+  console.log("number of pages: " + numberOfPages);
+
+
+if(list.length == 0){
+  return (
+
+    <div>
+      <Container fluid className="concert-list">
+        <Container className="concert-list-content">
+          <h1> No data was found</h1>
+        </Container>
+      </Container>
+    </div>
+  );
+
+}else{
   return (
 
     <div>
@@ -71,6 +89,7 @@ function ConcertPaginatedList(props) {
     </div>
   );
 
+}
 }
 export default ConcertPaginatedList;
 
